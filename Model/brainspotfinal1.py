@@ -102,3 +102,24 @@ from tensorflow.python.util.compat import path_to_str
 path="/content/train"
 
 train_data=preImage1(path)
+
+#use data generator
+
+def preImage2(path):
+  """
+  input:path
+  output:pre proccessed images
+  """
+  image_data=ImageDataGenerator(rescale=1/255)#no data augmentation in testing
+
+  image=image_data.flow_from_directory(directory=path,target_size=(244,244),batch_size=32,class_mode='binary')
+
+  return image
+
+path="/content/test"
+
+test_data=preImage2(path)
+
+path="/content/validation"
+
+val_data=preImage2(path)
