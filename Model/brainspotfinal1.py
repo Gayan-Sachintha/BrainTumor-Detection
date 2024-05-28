@@ -127,3 +127,7 @@ val_data=preImage2(path)
 #early stopping and model check point
 
 from keras.callbacks import ModelCheckpoint,EarlyStopping
+
+#early stopping
+
+es=EarlyStopping(monitor="val_accuracy",min_delta=0.01,patience=12,verbose=1,mode='auto')
