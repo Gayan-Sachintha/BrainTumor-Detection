@@ -53,3 +53,34 @@ import keras
 
 import keras
 print(keras.__version__)
+
+#CNN model
+
+from keras.models import Sequential  # Make sure to import Sequential with an uppercase "S"
+from keras.layers import Conv2D, MaxPool2D, Dropout, Flatten, Dense
+
+model = Sequential()
+
+model.add(Conv2D(filters=16, kernel_size=(3, 3), activation='relu', input_shape=(224, 224, 3), padding='same'))
+model.add(Conv2D(filters=36, kernel_size=(3, 3), activation='relu'))
+model.add(MaxPool2D(pool_size=(2, 2)))
+
+model.add(Conv2D(filters=64, kernel_size=(3, 3), activation='relu'))
+model.add(MaxPool2D(pool_size=(2, 2)))
+
+model.add(Conv2D(filters=128, kernel_size=(3, 3), activation='relu'))
+model.add(MaxPool2D(pool_size=(2, 2)))
+
+model.add(GlobalAvgPool2D())  # Add Global Average Pooling layer
+
+model.add(Dropout(rate=0.25))
+
+model.add(Dense(units=128, activation='relu'))
+model.add(Dropout(rate=0.25))
+model.add(Dense(units=1, activation='sigmoid'))
+
+model.summary()
+
+
+
+model.compile(optimizer='adam',loss=keras.losses.binary_crossentropy, metrics=['accuracy'])
