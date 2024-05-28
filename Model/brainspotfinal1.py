@@ -150,3 +150,26 @@ hs=model.fit_generator(generator=train_data,
                        validation_data=val_data,
                        validation_steps=16,
                        callbacks=cd)
+
+#Model graphical interpretation
+
+h=hs.history
+h.keys()
+
+import matplotlib.pyplot as plt
+
+plt.plot(h['accuracy'])
+
+plt.plot(h['val_accuracy'],c='red')
+
+plt.title('Accuracy vs Validation Accuracy')
+plt.show()
+
+import matplotlib.pyplot as plt
+
+plt.plot(h['loss'])
+
+plt.plot(h['val_loss'],c='red')
+
+plt.title('Loss vs Validation Loss')
+plt.show()
