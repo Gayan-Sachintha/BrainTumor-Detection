@@ -84,3 +84,21 @@ model.summary()
 
 
 model.compile(optimizer='adam',loss=keras.losses.binary_crossentropy, metrics=['accuracy'])
+
+#use data generator
+
+def preImage1(path):
+  """
+  input:path
+  output:pre proccessed images
+  """
+  image_data=ImageDataGenerator(zoom_range=0.2,shear_range=0.2,rescale=1/255,horizontal_flip=True)  #data augmentation
+
+  image=image_data.flow_from_directory(directory=path,target_size=(244,244),batch_size=32,class_mode='binary')
+
+  return image
+
+from tensorflow.python.util.compat import path_to_str
+path="/content/train"
+
+train_data=preImage1(path)
