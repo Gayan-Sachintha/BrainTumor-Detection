@@ -123,3 +123,7 @@ test_data=preImage2(path)
 path="/content/validation"
 
 val_data=preImage2(path)
+
+#early stopping and model check point
+
+from keras.callbacks import ModelCheckpoint,EarlyStopping
