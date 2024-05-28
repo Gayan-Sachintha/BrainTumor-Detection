@@ -131,3 +131,12 @@ from keras.callbacks import ModelCheckpoint,EarlyStopping
 #early stopping
 
 es=EarlyStopping(monitor="val_accuracy",min_delta=0.01,patience=12,verbose=1,mode='auto')
+
+#model checkpoint
+
+
+mc=ModelCheckpoint(monitor="val_accuracy",filepath="./bestmodel.h5",verbose=1,save_best=True,mode='auto')
+
+cd=[es,mc]
+
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
