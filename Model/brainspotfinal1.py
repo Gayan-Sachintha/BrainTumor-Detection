@@ -173,3 +173,30 @@ plt.plot(h['val_loss'],c='red')
 
 plt.title('Loss vs Validation Loss')
 plt.show()
+
+#Model accuracy
+
+from keras.models import load_model
+model=load_model("/content/bestmodel.h5")
+
+model.save('/content/model.keras')
+
+model = keras.models.load_model('/content/model.keras')
+
+acc=model.evaluate(test_data)[1]
+
+print(f"Accuracy of the model is {acc*100}% ")
+
+from tensorflow.keras.preprocessing.image import load_img, img_to_array
+
+import tensorflow as tf
+print(tf.__version__)
+
+path="/content/drive/MyDrive/BrainSpot/Brain Tumour 1/Testing/no_tumor/image(102).jpg"
+
+img=load_img(path,target_size=(224,224))
+
+input_arr=img_to_array(img)/255
+
+plt.imshow(input_arr)
+plt.show()
