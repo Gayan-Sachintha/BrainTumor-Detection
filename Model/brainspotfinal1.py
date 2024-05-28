@@ -200,3 +200,43 @@ input_arr=img_to_array(img)/255
 
 plt.imshow(input_arr)
 plt.show()
+
+# Expand dimensions to match the input shape of your model
+input_arr = np.expand_dims(input_arr, axis=0)
+
+# Make predictions
+predictions = model.predict(input_arr)
+
+# Assuming class 0 corresponds to "Tumour" and class 1 corresponds to "No Tumour"
+if predictions[0][0] >= 0.5:
+    print("MRI is Not having a tumour")
+else:
+    print("MRI is Having a Tumour")
+
+train_data.class_indices
+{'Non tumour':0,"Tumour":1}
+
+import numpy as np
+import matplotlib.pyplot as plt
+from keras.models import load_model
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
+from tensorflow.keras.preprocessing.image import load_img, img_to_array
+
+# Load the trained model
+model_path = "/content/drive/MyDrive/Project1/bestmodel(1).h5"  # Replace with the path to your model
+model = load_model(model_path)
+
+# Load the test data using an ImageDataGenerator
+def preImage2(path):
+    """
+    input:path
+    output:preprocessed images
+    """
+    image_data = ImageDataGenerator(rescale=1/255)  # No data augmentation in testing
+
+    image = image_data.flow_from_directory(directory=path, target_size=(224, 224), batch_size=32, class_mode='binary')
+
+    return image
+
+path = "/content/drive/MyDrive/NewDataset4/Brain Tumour1"
+test_data = preImage2(path)
