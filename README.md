@@ -69,8 +69,10 @@ We welcome contributions to enhance the functionality and performance of this pr
   - The dataset used in this project is sourced from [Kaggle](https://www.kaggle.com/).
 
 - **Libraries**:
-  - TensorFlow
-  - Keras
-  - Jupyter Notebook
+  - ![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white) Jupyter Notebook
+  - ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) Python
+  - ![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white) TensorFlow
+  - ![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white) Keras
+  - ![Kaggle](https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white) Kaggle
 
 Thank you for your interest in the BrainTumor-Detection project. We hope this tool proves to be valuable in detecting brain tumors and advancing medical research.
