@@ -140,3 +140,13 @@ mc=ModelCheckpoint(monitor="val_accuracy",filepath="./bestmodel.h5",verbose=1,sa
 cd=[es,mc]
 
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+#Model training
+
+hs=model.fit_generator(generator=train_data,
+                       steps_per_epoch=8,
+                       epochs=30,
+                       verbose=1,
+                       validation_data=val_data,
+                       validation_steps=16,
+                       callbacks=cd)
