@@ -240,3 +240,22 @@ def preImage2(path):
 
 path = "/content/drive/MyDrive/NewDataset4/Brain Tumour1"
 test_data = preImage2(path)
+
+# Make predictions on the test data
+y_true = test_data.classes
+y_pred = (model.predict(test_data) > 0.5).astype(int)
+
+# Calculate evaluation metrics
+accuracy = accuracy_score(y_true, y_pred)
+precision = precision_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred)
+f1 = f1_score(y_true, y_pred)
+confusion_mat = confusion_matrix(y_true, y_pred)
+classification_rep = classification_report(y_true, y_pred, target_names=test_data.class_indices.keys())
+
+print("Accuracy:", accuracy)
+print("Precision:", precision)
+print("Recall:", recall)
+print("F1-Score:", f1)
+print("Confusion Matrix:\n", confusion_mat)
+print("Classification Report:\n", classification_rep)
